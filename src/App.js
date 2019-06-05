@@ -16,10 +16,12 @@ class App extends Component {
         <Fragment>
           <GlobalStyle />
           <Iconfont />
-          <Header />
           <Router>
-            <Route path="/" exact component={Home}></Route>
-            <Route path="/detail" exact component={Detail}></Route>
+            <div>
+              <Header />
+              <Route path="/" exact component={Home} />
+              <Route path="/detail" exact component={Detail} />
+            </div>
           </Router>
         </Fragment>
       </Provider>

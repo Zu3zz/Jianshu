@@ -17,6 +17,7 @@ import {
   Button,
   SearchWrapper
 } from './style'
+import { Link } from 'react-router-dom'
 
 class Header extends Component {
   getListArea() {
@@ -76,7 +77,9 @@ class Header extends Component {
     const { focused, list, handleInputFocus, handleInputBlur } = this.props
     return (
       <HeaderWrapper>
-        <Logo />
+        <Link to='/'>
+          <Logo />
+        </Link>
         <Nav>
           <NavItem className="left active">首页</NavItem>
           <NavItem className="left">下载App</NavItem>
@@ -123,7 +126,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     handleInputFocus(list) {
-      (list.size === 0) && dispatch(actionCreators.getList())
+      list.size === 0 && dispatch(actionCreators.getList())
       dispatch(actionCreators.searchFocus())
     },
     handleInputBlur() {
