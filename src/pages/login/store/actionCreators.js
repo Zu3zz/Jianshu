@@ -14,7 +14,7 @@ export const logout = () => ({
 export const login = (accout, password) => {
 	return (dispatch) => {
 		axios.get('/api/login.json?account=' + accout + '&password=' + password).then((res) => {
-			const result = res.data.data;
+      const result = res.data.data;
 			if (result) {
 				dispatch(changeLogin())
 			}else {
