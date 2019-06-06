@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import logoPic from '../../statics/logo.png'
 
 export const HeaderWrapper = styled.div`
+  z-index: 1;
   position: relative;
   height: 56px;
   border-bottom: 1px solid #f0f0f0
@@ -10,7 +11,7 @@ export const HeaderWrapper = styled.div`
 export const Logo = styled.div`
   position: absolute;
   top: 0;
-  left: 110px;
+  left: 0;
   display: block;
   height: 56px;
   width: 100px;
@@ -98,7 +99,7 @@ export const NavSearch = styled.input.attrs({
 export const SearchInfo = styled.div`
   position: absolute;
   left: 0;
-  top: 54px;
+  top: 56px;
   width: 240px;
   padding: 0 20px;
   box-shadow: 0 0 8px rgba(0, 0, 0, .2);
@@ -116,6 +117,7 @@ export const SearchInfoTitle = styled.div`
 export const SearchInfoSwitch = styled.span`
   float: right;
   font-size: 13px;
+  cursor: pointer;
   .spin{
     display: block;
     float: left;

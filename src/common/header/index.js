@@ -63,9 +63,7 @@ class Header extends Component {
               换一批
             </SearchInfoSwitch>
           </SearchInfoTitle>
-          <div>
-            <SearchInfoList>{pageList}</SearchInfoList>
-          </div>
+          <SearchInfoList>{pageList}</SearchInfoList>
         </SearchInfo>
       )
     } else {
@@ -74,18 +72,21 @@ class Header extends Component {
   }
 
   render() {
-    const { focused, list, handleInputFocus, handleInputBlur } = this.props
+    const { focused, list, handleInputFocus, handleInputBlur, login, logout } = this.props
     return (
       <HeaderWrapper>
-        <Link to='/'>
+        <Link to="/">
           <Logo />
         </Link>
         <Nav>
           <NavItem className="left active">首页</NavItem>
           <NavItem className="left">下载App</NavItem>
-          <NavItem className="right">登录</NavItem>
+          {login ? 
+            <NavItem onClick={logout} className="right">退出</NavItem> : 
+            <Link to='/login'><NavItem className="right">登录</NavItem></Link>
+          }
           <NavItem className="right">
-            <span className="iconfont">&#xe636;</span>
+            <i className="iconfont">&#xe636;</i>
           </NavItem>
           <SearchWrapper>
             <CSSTransition timeout={200} in={focused} classNames="slide">
@@ -102,10 +103,12 @@ class Header extends Component {
           </SearchWrapper>
         </Nav>
         <Addition>
-          <Button className="writting">
-            <span className="iconfont">&#xe670;</span>
-            写文章
-          </Button>
+          <Link to='/write'>
+            <Button className="writting">
+              <i className="iconfont">&#xe670;</i>
+              写文章
+            </Button>
+          </Link>
           <Button className="reg">注册</Button>
         </Addition>
       </HeaderWrapper>
@@ -120,7 +123,8 @@ const mapStateToProps = state => {
     list: state.getIn(['header', 'list']),
     page: state.getIn(['header', 'page']),
     mouseIn: state.getIn(['header', 'mouseIn']),
-    totalPage: state.getIn(['header', 'totalPage'])
+    totalPage: state.getIn(['header', 'totalPage']),
+    login: state.getIn(['login', 'login'])
   }
 }
 const mapDispatchToProps = dispatch => {
